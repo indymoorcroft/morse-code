@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class TranslatorTest extends AnyFunSuite {
 
-  // englishToMorse
+  // 1. englishToMorse
   test("English letter returns correct morse code") {
     assert(Translator.englishToMorse("H").contains("...."))
   }

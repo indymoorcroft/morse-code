@@ -16,7 +16,7 @@ object Translator {
       for {
         valid <- current
         rest <- accumulated
-      } yield valid :: rest
+      } yield valid :: rest // prepends
     }
   }
 }
