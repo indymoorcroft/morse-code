@@ -12,4 +12,5 @@ object MorseCode {
     'Y' -> "-.--", 'Z' -> "--..", ' ' -> "/"
   )
 
+  val inverseMorseCode: Map[String, Char] = morseCode.map((a, b) => (b, a))
 }
