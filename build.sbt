@@ -4,5 +4,6 @@ ThisBuild / scalaVersion := "3.7.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "morse-code"
+    name := "morse-code",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test // scala test
   )
