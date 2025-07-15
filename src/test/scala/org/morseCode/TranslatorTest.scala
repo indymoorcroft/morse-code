@@ -23,7 +23,7 @@ class TranslatorTest extends AnyFunSuite {
   }
 
   test("Invalid character returns left projection error") {
-    assert(englishToMorse("HI!").isLeft)
+    assert(englishToMorse("HI%").isLeft)
   }
 
   // 2. morseToEnglish

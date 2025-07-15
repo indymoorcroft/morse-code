@@ -4,6 +4,16 @@ import org.morseCode.MorseCode.*
 
 object Translator {
 
+  def detectMode(input: String): Either[String, String] = {
+    val morseChars = Set('.', '-', '/', ' ')
+
+    if(input.nonEmpty && input.forall(morseChars.contains)){
+      morseToEnglish(input)
+    } else {
+      englishToMorse(input)
+    }
+  }
+
   def englishToMorse(input: String): Either[String, String] = {
     val convertedToMorse = input.toUpperCase.map {
       case char if morseCode.contains(char) => Right(morseCode(char))
