@@ -1,31 +1,28 @@
 package org.morseCode
 
 import scala.annotation.tailrec
-import scala.util.{Failure, Success, Try}
 
 object InputHandler {
 
   def translationPicker(): String = {
-    val valid = Set("1", "2")
-
-    @tailrec
-    def loop(): String = {
-      println("Choose mode:\n1. English to Morse\n2. Morse to English")
-      
-      val input = scala.io.StdIn.readLine().trim
-
-      if (valid.contains(input)) input
-      else {
-        println("Invalid input. Please enter 1 or 2\n")
-        loop()
-      }
-    }
-
-    loop()
+    getValidInput(Set("1", "2"), "Choose mode:\n1. English to Morse\n2. Morse to English")
   }
 
   def readInput(prompt: String): String = {
     println(prompt)
     scala.io.StdIn.readLine()
+  }
+
+  @tailrec
+  def getValidInput(validInputs: Set[String], prompt: String): String = {
+    println(prompt)
+
+    val input = scala.io.StdIn.readLine().trim.toLowerCase
+
+    if (validInputs.contains(input)) input
+    else {
+      println(s"Invalid input. Please enter ${validInputs.toList.sorted.mkString(" or ")}\n")
+      getValidInput(validInputs, prompt)
+    }
   }
 }
