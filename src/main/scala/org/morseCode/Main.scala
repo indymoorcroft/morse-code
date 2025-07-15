@@ -17,14 +17,16 @@ object Main extends App {
 
     val result = detectMode(input)
 
-    if(input.equals("#")){
-      println("Goodbye")
-    } else {
+    if(!shouldExit(input)){
       val result = detectMode(input)
       displayResult(result)
       runTranslator()
+    } else {
+      println("\nGoodbye. Thank you for using the Morse code Translator")
     }
   }
 
   runTranslator()
 }
+
+def shouldExit(input: String): Boolean = input.trim.equals("#")
