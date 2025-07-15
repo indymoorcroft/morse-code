@@ -1,31 +1,32 @@
 package org.morseCode
 
-import org.morseCode.InputHandler.*
+import org.morseCode.InputHandler.readInput
 import org.morseCode.OutputHandler.displayResult
-import org.morseCode.Translator.*
+import org.morseCode.Translator.detectMode
 
 import scala.annotation.tailrec
 
 object Main extends App {
 
+  println("Hello! Welcome to the Morse code Translator. Here's how to use it: \n- Type English letters to receive a Morse code translation\n- Type Morse code to receive an English translation\n- Type '#' to quit")
+
   @tailrec
   private def runTranslator(): Unit = {
-    val mode = translationPicker()
 
-    val input = readInput(if (mode == "1") "\nYou have chosen English to Morse. Enter English text:" else "\nYou have chosen Morse to English. Enter Morse code:")
+    val input = readInput("\nEnter text: ")
 
-    val result = mode match {
-      case "1" => englishToMorse(input)
-      case "2" => morseToEnglish(input)
+    val result = detectMode(input)
+
+    if(!shouldExit(input)){
+      val result = detectMode(input)
+      displayResult(result)
+      runTranslator()
+    } else {
+      println("\nGoodbye. Thank you for using the Morse code Translator")
     }
-
-    displayResult(result)
-
-    val continue = getValidInput(Set("y", "n"), "\nWould you like to do another translation? (y/n): ")
-
-    if(continue == "y") runTranslator()
-    else println("\nGoodbye!")
   }
 
   runTranslator()
 }
+
+def shouldExit(input: String): Boolean = input.trim.equals("#")
