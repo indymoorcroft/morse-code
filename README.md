@@ -36,6 +36,7 @@ A simple, functional Scala command-line application that translates between **En
 - sbt (Scala Build Tool)
 
 ### 🏃🏻‍♂️‍➡️ Run the app
+- In the command line 'cd' into the folder where you would like the repository to sit in your file structure. Then use: git clone https://github.com/indymoorcroft/morse-code.git
 - sbt run (to start program)
 - sbt test (to run tests)
 
@@ -43,7 +44,7 @@ A simple, functional Scala command-line application that translates between **En
 
 ## 🧪 Testing Coverage
 
-###Tested features:
+### Tested features:
 - English → Morse
 - Morse → English
 - Word separation and spacing
